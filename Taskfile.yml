@@ -1,6 +1,15 @@
 version: "3"
 
 tasks:
-  default:
+  format:
     cmds:
-      - echo 'Hi from Taskfile'
+      - autopep8 --in-place --recursive day_*
+
+  test:
+    cmds:
+      - pytest -s -v
+
+  day1:
+    dir: day_01
+    cmds:
+      - python day_01.py
