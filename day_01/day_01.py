@@ -46,6 +46,7 @@ def day_01_part_2(filename: str) -> int:
     ("filename", "expected"),
     (
         (EXAMPLE_TXT, 24000),
+        (INPUT_TXT, 74198),
     )
 )
 def test_day_01_part_1(filename: str, expected: int) -> None:
@@ -56,6 +57,7 @@ def test_day_01_part_1(filename: str, expected: int) -> None:
     ("filename", "expected"),
     (
         (EXAMPLE_TXT, 45000),
+        (INPUT_TXT, 209914),
     )
 )
 def test_day_01_part_2(filename: str, expected: int) -> None:
