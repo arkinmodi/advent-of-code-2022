@@ -1,5 +1,4 @@
 import argparse
-import collections
 import os.path
 
 import pytest
