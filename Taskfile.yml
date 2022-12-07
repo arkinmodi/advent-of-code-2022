@@ -35,3 +35,7 @@ tasks:
     dir: day_06
     cmds:
       - python day_06.py
+  day7:
+    dir: day_07
+    cmds:
+      - python day_07.py
