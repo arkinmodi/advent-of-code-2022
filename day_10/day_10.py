@@ -121,7 +121,7 @@ INPUT_TXT_2_PART_2_EXPECTED = """
         (INPUT_TXT, INPUT_TXT_2_PART_2_EXPECTED),
     )
 )
-def test_day_10_part_2(filename: str, expected: int) -> None:
+def test_day_10_part_2(filename: str, expected: str) -> None:
     assert day_10_part_2(filename) == expected
 
 
