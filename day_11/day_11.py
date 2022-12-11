@@ -1,7 +1,7 @@
 import argparse
 import collections
 import os.path
-import functools
+
 import pytest
 
 INPUT_TXT = os.path.join(os.path.dirname(__file__), 'input.txt')
