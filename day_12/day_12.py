@@ -1,6 +1,5 @@
 import argparse
 import collections
-import math
 import os.path
 
 import pytest
