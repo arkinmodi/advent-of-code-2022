@@ -63,3 +63,8 @@ tasks:
     dir: day_11
     cmds:
       - python day_11.py
+
+  day12:
+    dir: day_12
+    cmds:
+      - python day_12.py
