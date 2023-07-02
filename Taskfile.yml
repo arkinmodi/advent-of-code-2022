@@ -4,6 +4,8 @@ tasks:
   format:
     cmds:
       - autopep8 --in-place --recursive day_*
+      - add-trailing-comma --py36-plus day_*/*.py
+      - reorder-python-imports day_*/*.py
 
   test:
     cmds:
@@ -12,74 +14,84 @@ tasks:
   day1:
     dir: day_01
     cmds:
-      - python day_01.py
+      - python3 day_01.py
 
   day2:
     dir: day_02
     cmds:
-      - python day_02.py
+      - python3 day_02.py
 
   day3:
     dir: day_03
     cmds:
-      - python day_03.py
+      - python3 day_03.py
 
   day4:
     dir: day_04
     cmds:
-      - python day_04.py
+      - python3 day_04.py
 
   day5:
     dir: day_05
     cmds:
-      - python day_05.py
+      - python3 day_05.py
 
   day6:
     dir: day_06
     cmds:
-      - python day_06.py
+      - python3 day_06.py
 
   day7:
     dir: day_07
     cmds:
-      - python day_07.py
+      - python3 day_07.py
 
   day8:
     dir: day_08
     cmds:
-      - python day_08.py
+      - python3 day_08.py
 
   day9:
     dir: day_09
     cmds:
-      - python day_09.py
+      - python3 day_09.py
 
   day10:
     dir: day_10
     cmds:
-      - python day_10.py
+      - python3 day_10.py
 
   day11:
     dir: day_11
     cmds:
-      - python day_11.py
+      - python3 day_11.py
 
   day12:
     dir: day_12
     cmds:
-      - python day_12.py
+      - python3 day_12.py
 
   day13:
     dir: day_13
     cmds:
-      - python day_13.py
+      - python3 day_13.py
 
   day14:
     dir: day_14
     cmds:
-      - python day_14.py
+      - python3 day_14.py
 
   day15:
     dir: day_15
     cmds:
-      - python day_15.py
+      - python3 day_15.py
+
+  day16:
+    dir: day_16
+    cmds:
+      - python3 day_16.py
+
+  day16:
+    dir: day_16
+    cmds:
+      - python3 day_16.py
