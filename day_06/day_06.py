@@ -44,7 +44,7 @@ def day_06_part_2(filename: str) -> int:
         (EXAMPLE_TXT_4, 10),
         (EXAMPLE_TXT_5, 11),
         (INPUT_TXT, 1275),
-    )
+    ),
 )
 def test_day_06_part_1(filename: str, expected: int) -> None:
     assert day_06_part_1(filename) == expected
@@ -59,7 +59,7 @@ def test_day_06_part_1(filename: str, expected: int) -> None:
         (EXAMPLE_TXT_4, 29),
         (EXAMPLE_TXT_5, 26),
         (INPUT_TXT, 3605),
-    )
+    ),
 )
 def test_day_06_part_2(filename: str, expected: int) -> None:
     assert day_06_part_2(filename) == expected

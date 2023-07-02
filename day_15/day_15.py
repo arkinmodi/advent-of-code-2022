@@ -24,10 +24,12 @@ def day_15_part_1(filename: str, target_row: int) -> int:
 
         distance_to_target_row = abs(sensor_y - target_row)
 
-        no_beacons.update(range(
-            sensor_x - manhattan_distance + distance_to_target_row,
-            sensor_x + manhattan_distance - distance_to_target_row
-        ))
+        no_beacons.update(
+            range(
+                sensor_x - manhattan_distance + distance_to_target_row,
+                sensor_x + manhattan_distance - distance_to_target_row,
+            ),
+        )
 
     return len(no_beacons)
 
@@ -122,7 +124,7 @@ def day_15_part_2(filename: str, max_bound: int) -> int:
     (
         (EXAMPLE_TXT, 10, 26),
         (INPUT_TXT, 2_000_000, 6425133),
-    )
+    ),
 )
 def test_day_15_part_1(filename: str, target_row: int, expected: int) -> None:
     assert day_15_part_1(filename, target_row) == expected
@@ -133,7 +135,7 @@ def test_day_15_part_1(filename: str, target_row: int, expected: int) -> None:
     (
         (EXAMPLE_TXT, 20, 56000011),
         # (INPUT_TXT, 4_000_000, 10996191429555), # Too Slow To Run
-    )
+    ),
 )
 def test_day_15_part_2(filename: str, max_bound: int, expected: int) -> None:
     assert day_15_part_2(filename, max_bound) == expected

@@ -31,7 +31,8 @@ def day_11_part_1(filename: str) -> int:
 
             self.items_inspected += 1
             amount = self.items[0] if self.operation_amount == "old" else int(
-                self.operation_amount)
+                self.operation_amount,
+            )
             match self.operation:
                 case '+': self.items[0] += amount
                 case '*': self.items[0] *= amount
@@ -59,15 +60,20 @@ def day_11_part_1(filename: str) -> int:
         string_operation = input[i + 2].split(' ')
         operation = string_operation[4]
         operation_amount = string_operation[5] if string_operation[5] == "old" else int(
-            string_operation[5])
+            string_operation[5],
+        )
 
         # Parse test
         test = int(input[i + 3].split(' ')[-1])
         test_true = int(input[i + 4].split(' ')[-1])
         test_false = int(input[i + 5].split(' ')[-1])
 
-        monkeys.append(Monkey(items, operation, operation_amount,
-                       test, test_true, test_false))
+        monkeys.append(
+            Monkey(
+                items, operation, operation_amount,
+                test, test_true, test_false,
+            ),
+        )
 
     # Play Keep Away
     for _ in range(20):
@@ -112,7 +118,8 @@ def day_11_part_2(filename: str) -> int:
 
             self.items_inspected += 1
             amount = self.items[0] if self.operation_amount == "old" else int(
-                self.operation_amount)
+                self.operation_amount,
+            )
             match self.operation:
                 case '+': self.items[0] += amount
                 case '*': self.items[0] *= amount
@@ -140,15 +147,20 @@ def day_11_part_2(filename: str) -> int:
         string_operation = input[i + 2].split(' ')
         operation = string_operation[4]
         operation_amount = string_operation[5] if string_operation[5] == "old" else int(
-            string_operation[5])
+            string_operation[5],
+        )
 
         # Parse test
         test = int(input[i + 3].split(' ')[-1])
         test_true = int(input[i + 4].split(' ')[-1])
         test_false = int(input[i + 5].split(' ')[-1])
 
-        monkeys.append(Monkey(items, operation, operation_amount,
-                       test, test_true, test_false))
+        monkeys.append(
+            Monkey(
+                items, operation, operation_amount,
+                test, test_true, test_false,
+            ),
+        )
 
     # Calculate Global Monkey Modulo
     GLOBAL_MONKEY_MODULO = 1
@@ -180,7 +192,7 @@ def day_11_part_2(filename: str) -> int:
     (
         (EXAMPLE_TXT, 10605),
         (INPUT_TXT, 99852),
-    )
+    ),
 )
 def test_day_11_part_1(filename: str, expected: int) -> None:
     assert day_11_part_1(filename) == expected
@@ -191,7 +203,7 @@ def test_day_11_part_1(filename: str, expected: int) -> None:
     (
         (EXAMPLE_TXT, 2713310158),
         (INPUT_TXT, 25935263541),
-    )
+    ),
 )
 def test_day_11_part_2(filename: str, expected: int) -> None:
     assert day_11_part_2(filename) == expected
