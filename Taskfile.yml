@@ -4,7 +4,7 @@ tasks:
   format:
     cmds:
       - autopep8 --in-place --recursive day_*
-      - add-trailing-comma --py36-plus day_*/*.py
+      - add-trailing-comma day_*/*.py
       - reorder-python-imports day_*/*.py
 
   test:
@@ -91,7 +91,7 @@ tasks:
     cmds:
       - python3 day_16.py
 
-  day16:
-    dir: day_16
+  day17:
+    dir: day_17
     cmds:
-      - python3 day_16.py
+      - python3 day_17.py
