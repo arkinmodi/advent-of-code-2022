@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import os.path
 
@@ -36,7 +38,7 @@ def day_06_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT_1, 7),
         (EXAMPLE_TXT_2, 5),
@@ -51,7 +53,7 @@ def test_day_06_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT_1, 19),
         (EXAMPLE_TXT_2, 23),
@@ -65,7 +67,7 @@ def test_day_06_part_2(filename: str, expected: int) -> None:
     assert day_06_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

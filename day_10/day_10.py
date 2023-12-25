@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import os.path
 
@@ -30,7 +32,7 @@ def day_10_part_1(filename: str) -> int:
         # Add new task
         if line < len(input) and len(tasks) == 0:
             cmd = input[line].split(' ')
-            if cmd[0] == "addx":
+            if cmd[0] == 'addx':
                 tasks.append([int(cmd[1]), 2])
             line += 1
 
@@ -46,7 +48,7 @@ def day_10_part_2(filename: str) -> str:
         input = [l.strip('\n') for l in f]
 
     SCREEN_WIDTH, SCREEN_HEIGHT = 40, 6
-    crt_screen = ""
+    crt_screen = ''
 
     x, tasks, line = 1, [], 0
     for cycle in range(SCREEN_WIDTH * SCREEN_HEIGHT):
@@ -63,7 +65,7 @@ def day_10_part_2(filename: str) -> str:
         # Add new task
         if line < len(input) and len(tasks) == 0:
             cmd = input[line].split(' ')
-            if cmd[0] == "addx":
+            if cmd[0] == 'addx':
                 tasks.append([int(cmd[1]), 2])
             line += 1
 
@@ -84,7 +86,7 @@ def day_10_part_2(filename: str) -> str:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT_1, 0),
         (EXAMPLE_TXT_2, 13140),
@@ -115,7 +117,7 @@ INPUT_TXT_2_PART_2_EXPECTED = """
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT_2, EXAMPLE_TXT_2_PART_2_EXPECTED),
         (INPUT_TXT, INPUT_TXT_2_PART_2_EXPECTED),
@@ -125,7 +127,7 @@ def test_day_10_part_2(filename: str, expected: str) -> None:
     assert day_10_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

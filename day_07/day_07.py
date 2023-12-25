@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import os.path
 
@@ -12,7 +14,7 @@ def day_07_part_1(filename: str) -> int:
         input = [l.strip('\n') for l in f]
 
     class Folder:
-        def __init__(self, size: int = 0, name: str = "", parent=None) -> None:
+        def __init__(self, size: int = 0, name: str = '', parent=None) -> None:
             self.size = size
             self.name = name
             self.parent = parent
@@ -32,7 +34,8 @@ def day_07_part_1(filename: str) -> int:
 
         def print_tree(self) -> None:
             print(
-                f"name: {self.name} \t size: {self.get_size()} \t children: {[c.name for c in self.children]}",
+                f"name: {self.name} \t size: {self.get_size()} \t children: {
+                    [c.name for c in self.children]}",
             )
             for f in self.children:
                 f.print_tree()
@@ -43,7 +46,7 @@ def day_07_part_1(filename: str) -> int:
     # Build Folder Structure
     for l in input:
         output = l.split(' ')
-        if output[0] == '$' and output[1] == "cd":
+        if output[0] == '$' and output[1] == 'cd':
             if output[2] == '/':
                 curr_folder = root
             elif output[2] == '..':
@@ -79,7 +82,7 @@ def day_07_part_2(filename: str) -> int:
         input = [l.strip('\n') for l in f]
 
     class Folder:
-        def __init__(self, size: int = 0, name: str = "", parent=None) -> None:
+        def __init__(self, size: int = 0, name: str = '', parent=None) -> None:
             self.size = size
             self.name = name
             self.parent = parent
@@ -99,7 +102,8 @@ def day_07_part_2(filename: str) -> int:
 
         def print_tree(self) -> None:
             print(
-                f"name: {self.name} \t size: {self.get_size()} \t children: {[c.name for c in self.children]}",
+                f"name: {self.name} \t size: {self.get_size()} \t children: {
+                    [c.name for c in self.children]}",
             )
             for f in self.children:
                 f.print_tree()
@@ -111,7 +115,7 @@ def day_07_part_2(filename: str) -> int:
     for l in input:
         output = l.split(' ')
         if output[0] == '$':
-            if output[1] == "cd":
+            if output[1] == 'cd':
                 if output[2] == '/':
                     curr_folder = root
                 elif output[2] == '..':
@@ -160,7 +164,7 @@ def day_07_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 95437),
         (INPUT_TXT, 1118405),
@@ -171,7 +175,7 @@ def test_day_07_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 24933642),
         (INPUT_TXT, 12545514),
@@ -181,7 +185,7 @@ def test_day_07_part_2(filename: str, expected: int) -> None:
     assert day_07_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

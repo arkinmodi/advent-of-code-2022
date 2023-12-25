@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import os.path
 
@@ -13,12 +15,12 @@ def day_04_part_1(filename: str) -> int:
 
     overlap = 0
     for pair in input:
-        first, second = pair.split(",")
+        first, second = pair.split(',')
 
-        first_start, first_end = first.split("-")
+        first_start, first_end = first.split('-')
         first_start, first_end = int(first_start), int(first_end)
 
-        second_start, second_end = second.split("-")
+        second_start, second_end = second.split('-')
         second_start, second_end = int(second_start), int(second_end)
 
         if (
@@ -36,12 +38,12 @@ def day_04_part_2(filename: str) -> int:
 
     overlap = 0
     for pair in input:
-        first, second = pair.split(",")
+        first, second = pair.split(',')
 
-        first_start, first_end = first.split("-")
+        first_start, first_end = first.split('-')
         first_start, first_end = int(first_start), int(first_end)
 
-        second_start, second_end = second.split("-")
+        second_start, second_end = second.split('-')
         second_start, second_end = int(second_start), int(second_end)
 
         if (
@@ -56,7 +58,7 @@ def day_04_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 2),
         (INPUT_TXT, 459),
@@ -67,7 +69,7 @@ def test_day_04_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 4),
         (INPUT_TXT, 779),
@@ -77,7 +79,7 @@ def test_day_04_part_2(filename: str, expected: int) -> None:
     assert day_04_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

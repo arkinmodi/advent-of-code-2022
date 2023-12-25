@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import collections
 import os.path
@@ -37,7 +39,7 @@ def day_05_part_1(filename: str) -> str:
         for _ in range(quantity):
             stacks[to_stack].append(stacks[from_stack].pop())
 
-    return "".join([s[-1] for s in stacks])
+    return ''.join([s[-1] for s in stacks])
 
 
 def day_05_part_2(filename: str) -> str:
@@ -71,14 +73,14 @@ def day_05_part_2(filename: str) -> str:
             crane.appendleft(stacks[from_stack].pop())
         stacks[to_stack].extend(crane)
 
-    return "".join([s[-1] for s in stacks])
+    return ''.join([s[-1] for s in stacks])
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
-        (EXAMPLE_TXT, "CMZ"),
-        (INPUT_TXT, "VGBBJCRMN"),
+        (EXAMPLE_TXT, 'CMZ'),
+        (INPUT_TXT, 'VGBBJCRMN'),
     ),
 )
 def test_day_05_part_1(filename: str, expected: str) -> None:
@@ -86,17 +88,17 @@ def test_day_05_part_1(filename: str, expected: str) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
-        (EXAMPLE_TXT, "MCD"),
-        (INPUT_TXT, "LBBVJBRMH"),
+        (EXAMPLE_TXT, 'MCD'),
+        (INPUT_TXT, 'LBBVJBRMH'),
     ),
 )
 def test_day_05_part_2(filename: str, expected: str) -> None:
     assert day_05_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

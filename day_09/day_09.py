@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import os.path
 
@@ -14,7 +16,7 @@ def day_09_part_1(filename: str) -> int:
 
     head_x, head_y = 0, 0
     tail_x, tail_y = 0, 0
-    tail_visited = set([(tail_x, tail_y)])
+    tail_visited = {(tail_x, tail_y)}
 
     for command in input:
         direction, steps = command.split(' ')
@@ -28,7 +30,7 @@ def day_09_part_1(filename: str) -> int:
                 case 'D': head_y -= 1
                 case 'R': head_x += 1
                 case 'L': head_x -= 1
-                case _: raise Exception("Invalid direction")
+                case _: raise Exception('Invalid direction')
 
             # Check if tail is still touching head
             is_tail_valid = False
@@ -50,7 +52,7 @@ def day_09_part_2(filename: str) -> int:
         input = [l.strip('\n') for l in f]
 
     knots = [[0, 0] for _ in range(10)]
-    knots_visited = [set([(knots[0][0], knots[0][1])]) for _ in range(10)]
+    knots_visited = [{(knots[0][0], knots[0][1])} for _ in range(10)]
 
     for command in input:
         direction, steps = command.split(' ')
@@ -62,7 +64,7 @@ def day_09_part_2(filename: str) -> int:
                 case 'D': knots[0][1] -= 1
                 case 'R': knots[0][0] += 1
                 case 'L': knots[0][0] -= 1
-                case _: raise Exception("Invalid direction")
+                case _: raise Exception('Invalid direction')
 
             knots_visited[0].add((knots[0][0], knots[0][1]))
 
@@ -85,7 +87,7 @@ def day_09_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT_1, 13),
         (INPUT_TXT, 6745),
@@ -96,7 +98,7 @@ def test_day_09_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT_1, 1),
         (EXAMPLE_TXT_2, 36),
@@ -107,7 +109,7 @@ def test_day_09_part_2(filename: str, expected: int) -> None:
     assert day_09_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

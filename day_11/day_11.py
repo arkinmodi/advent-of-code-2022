@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import collections
 import os.path
@@ -30,13 +32,13 @@ def day_11_part_1(filename: str) -> int:
                 return
 
             self.items_inspected += 1
-            amount = self.items[0] if self.operation_amount == "old" else int(
+            amount = self.items[0] if self.operation_amount == 'old' else int(
                 self.operation_amount,
             )
             match self.operation:
                 case '+': self.items[0] += amount
                 case '*': self.items[0] *= amount
-                case _: raise Exception("Invalid operation")
+                case _: raise Exception('Invalid operation')
             self.items[0] = self.items[0] // 3
 
         def throw_to(self) -> int:
@@ -59,7 +61,7 @@ def day_11_part_1(filename: str) -> int:
         # Parse operation
         string_operation = input[i + 2].split(' ')
         operation = string_operation[4]
-        operation_amount = string_operation[5] if string_operation[5] == "old" else int(
+        operation_amount = string_operation[5] if string_operation[5] == 'old' else int(
             string_operation[5],
         )
 
@@ -117,13 +119,13 @@ def day_11_part_2(filename: str) -> int:
                 return
 
             self.items_inspected += 1
-            amount = self.items[0] if self.operation_amount == "old" else int(
+            amount = self.items[0] if self.operation_amount == 'old' else int(
                 self.operation_amount,
             )
             match self.operation:
                 case '+': self.items[0] += amount
                 case '*': self.items[0] *= amount
-                case _: raise Exception("Invalid operation")
+                case _: raise Exception('Invalid operation')
             self.items[0] %= modulo
 
         def throw_to(self) -> int:
@@ -146,7 +148,7 @@ def day_11_part_2(filename: str) -> int:
         # Parse operation
         string_operation = input[i + 2].split(' ')
         operation = string_operation[4]
-        operation_amount = string_operation[5] if string_operation[5] == "old" else int(
+        operation_amount = string_operation[5] if string_operation[5] == 'old' else int(
             string_operation[5],
         )
 
@@ -188,7 +190,7 @@ def day_11_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 10605),
         (INPUT_TXT, 99852),
@@ -199,7 +201,7 @@ def test_day_11_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 2713310158),
         (INPUT_TXT, 25935263541),
@@ -209,7 +211,7 @@ def test_day_11_part_2(filename: str, expected: int) -> None:
     assert day_11_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

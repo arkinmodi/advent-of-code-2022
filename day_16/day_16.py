@@ -180,7 +180,7 @@ def day_16_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 1651),
         (INPUT_TXT, 2114),
@@ -191,7 +191,7 @@ def test_day_16_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 1707),
         # (INPUT_TXT, 2666),
@@ -201,7 +201,7 @@ def test_day_16_part_2(filename: str, expected: int) -> None:
     assert day_16_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()

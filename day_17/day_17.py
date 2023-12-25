@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 import argparse
 import os.path
 from copy import deepcopy
@@ -13,7 +15,7 @@ def day_17_part_1(filename: str) -> int:
         input = [n.strip() for n in f]
     input = list(input[0])
 
-    chamber = []
+    chamber: list[list[str]] = []
     jet = 0
 
     STARTING_SPACE = (
@@ -146,7 +148,7 @@ def day_17_part_2(filename: str) -> int:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 3068),
         (INPUT_TXT, 3133),
@@ -157,7 +159,7 @@ def test_day_17_part_1(filename: str, expected: int) -> None:
 
 
 @pytest.mark.parametrize(
-    ("filename", "expected"),
+    ('filename', 'expected'),
     (
         (EXAMPLE_TXT, 1514285714288),
         # (INPUT_TXT, 209914),
@@ -167,7 +169,7 @@ def test_day_17_part_2(filename: str, expected: int) -> None:
     assert day_17_part_2(filename) == expected
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()
