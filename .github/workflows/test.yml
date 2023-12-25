@@ -1,0 +1,21 @@
+# yamllint disable rule:line-length
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# yamllint enable rule:line-length
+---
+name: Test
+"on":
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.x
+          cache: "pip"
+      - run: python3 -m pip install -r requirements.txt
+      - run: python3 -m pytest -s -v

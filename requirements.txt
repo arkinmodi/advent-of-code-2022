@@ -1,5 +1,1 @@
-add-trailing-comma
-autopep8
-mypy
 pytest
-reorder-python-imports
