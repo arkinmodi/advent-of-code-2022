@@ -11,15 +11,15 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_15_part_1(filename: str, target_row: int) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     no_beacons: set[int] = set()
     for line in input:
-        l = line.split(' ')
-        sensor_x = int(l[2].replace('x=', '').replace(',', ''))
-        sensor_y = int(l[3].replace('y=', '').replace(':', ''))
-        beacon_x = int(l[8].replace('x=', '').replace(',', ''))
-        beacon_y = int(l[9].replace('y=', ''))
+        split = line.split(' ')
+        sensor_x = int(split[2].replace('x=', '').replace(',', ''))
+        sensor_y = int(split[3].replace('y=', '').replace(':', ''))
+        beacon_x = int(split[8].replace('x=', '').replace(',', ''))
+        beacon_y = int(split[9].replace('y=', ''))
 
         manhattan_distance = abs(sensor_x - beacon_x) + \
             abs(sensor_y - beacon_y)
@@ -38,15 +38,15 @@ def day_15_part_1(filename: str, target_row: int) -> int:
 
 def day_15_part_2(filename: str, max_bound: int) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     sensor_beacon: set[tuple[tuple[int, int], tuple[int, int]]] = set()
     for line in input:
-        l = line.split(' ')
-        sensor_x = int(l[2].replace('x=', '').replace(',', ''))
-        sensor_y = int(l[3].replace('y=', '').replace(':', ''))
-        beacon_x = int(l[8].replace('x=', '').replace(',', ''))
-        beacon_y = int(l[9].replace('y=', ''))
+        split = line.split(' ')
+        sensor_x = int(split[2].replace('x=', '').replace(',', ''))
+        sensor_y = int(split[3].replace('y=', '').replace(':', ''))
+        beacon_x = int(split[8].replace('x=', '').replace(',', ''))
+        beacon_y = int(split[9].replace('y=', ''))
         sensor_beacon.add(((sensor_x, sensor_y), (beacon_x, beacon_y)))
 
     def manhattan_distance(x0: int, y0: int, x1: int, y1: int) -> int:
@@ -54,7 +54,11 @@ def day_15_part_2(filename: str, max_bound: int) -> int:
 
     def is_covered_by_sensor(x: int, y: int) -> bool:
         for s, b in sensor_beacon:
-            if manhattan_distance(s[0], s[1], x, y) <= manhattan_distance(s[0], s[1], b[0], b[1]):
+            if (
+                    manhattan_distance(
+                        s[0], s[1], x, y,
+                    ) <= manhattan_distance(s[0], s[1], b[0], b[1])
+            ):
                 return True
         return False
 

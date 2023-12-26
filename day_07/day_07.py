@@ -11,14 +11,14 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_07_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     class Folder:
         def __init__(self, size: int = 0, name: str = '', parent=None) -> None:
             self.size = size
             self.name = name
             self.parent = parent
-            self.children = []
+            self.children: list[Folder] = []
 
         def index_of_folder(self, target: str) -> int:
             for i, f in enumerate(self.children):
@@ -35,7 +35,8 @@ def day_07_part_1(filename: str) -> int:
         def print_tree(self) -> None:
             print(
                 f"name: {self.name} \t size: {self.get_size()} \t children: {
-                    [c.name for c in self.children]}",
+                    [c.name for c in self.children]
+                }",
             )
             for f in self.children:
                 f.print_tree()
@@ -44,8 +45,8 @@ def day_07_part_1(filename: str) -> int:
     curr_folder = root
 
     # Build Folder Structure
-    for l in input:
-        output = l.split(' ')
+    for line in input:
+        output = line.split(' ')
         if output[0] == '$' and output[1] == 'cd':
             if output[2] == '/':
                 curr_folder = root
@@ -79,14 +80,14 @@ def day_07_part_1(filename: str) -> int:
 
 def day_07_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     class Folder:
         def __init__(self, size: int = 0, name: str = '', parent=None) -> None:
             self.size = size
             self.name = name
             self.parent = parent
-            self.children = []
+            self.children: list[Folder] = []
 
         def index_of_folder(self, target: str) -> int:
             for i, f in enumerate(self.children):
@@ -103,7 +104,8 @@ def day_07_part_2(filename: str) -> int:
         def print_tree(self) -> None:
             print(
                 f"name: {self.name} \t size: {self.get_size()} \t children: {
-                    [c.name for c in self.children]}",
+                    [c.name for c in self.children]
+                }",
             )
             for f in self.children:
                 f.print_tree()
@@ -112,8 +114,8 @@ def day_07_part_2(filename: str) -> int:
     curr_folder = root
 
     # Build Folder Structure
-    for l in input:
-        output = l.split(' ')
+    for line in input:
+        output = line.split(' ')
         if output[0] == '$':
             if output[1] == 'cd':
                 if output[2] == '/':
@@ -155,7 +157,10 @@ def day_07_part_2(filename: str) -> int:
     left, right = 0, len(folder_sizes)  # [left, right)
     while left < right:
         mid = left + (right - left) // 2
-        if TOTAL_USED_SPACE - folder_sizes[mid][1] <= TOTAL_SPACE - MIN_SPACE_NEEDED:
+        if (
+            TOTAL_USED_SPACE -
+            folder_sizes[mid][1] <= TOTAL_SPACE - MIN_SPACE_NEEDED
+        ):
             right = mid
         else:
             left = mid + 1

@@ -15,7 +15,7 @@ EXAMPLE_TXT_5 = os.path.join(os.path.dirname(__file__), 'example_5.txt')
 
 def day_06_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     data_stream = input[0]
     for i in range(len(data_stream) - 3):
@@ -27,7 +27,7 @@ def day_06_part_1(filename: str) -> int:
 
 def day_06_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     data_stream = input[0]
     for i in range(len(data_stream) - 13):

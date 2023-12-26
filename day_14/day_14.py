@@ -11,7 +11,7 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_14_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     SAND_SOURCE = (500, 0)
     LOWEST_ROCK = 0
@@ -43,38 +43,36 @@ def day_14_part_1(filename: str) -> int:
                     rocks.add((x, y1))
 
     # Drop Sand
-    active_sand = list(SAND_SOURCE)
+    active_sand = SAND_SOURCE
     while active_sand[1] < LOWEST_ROCK:
         if (
             (active_sand[0], active_sand[1] + 1) not in rocks and
             (active_sand[0], active_sand[1] + 1) not in resting_sand
         ):
-            active_sand[1] += 1
+            active_sand = (active_sand[0], active_sand[1] + 1)
 
         elif (
             (active_sand[0] - 1, active_sand[1] + 1) not in rocks and
             (active_sand[0] - 1, active_sand[1] + 1) not in resting_sand
         ):
-            active_sand[0] -= 1
-            active_sand[1] += 1
+            active_sand = (active_sand[0] - 1, active_sand[1] + 1)
 
         elif (
             (active_sand[0] + 1, active_sand[1] + 1) not in rocks and
             (active_sand[0] + 1, active_sand[1] + 1) not in resting_sand
         ):
-            active_sand[0] += 1
-            active_sand[1] += 1
+            active_sand = (active_sand[0] + 1, active_sand[1] + 1)
 
         else:
-            resting_sand.add(tuple(active_sand))
-            active_sand = list(SAND_SOURCE)
+            resting_sand.add(active_sand)
+            active_sand = SAND_SOURCE
 
     return len(resting_sand)
 
 
 def day_14_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     SAND_SOURCE = (500, 0)
     FLOOR = 0
@@ -108,34 +106,32 @@ def day_14_part_2(filename: str) -> int:
     FLOOR += 2
 
     # Drop Sand
-    active_sand = list(SAND_SOURCE)
+    active_sand = SAND_SOURCE
     while SAND_SOURCE not in resting_sand:
         if (
             (active_sand[0], active_sand[1] + 1) not in rocks and
             (active_sand[0], active_sand[1] + 1) not in resting_sand and
             active_sand[1] + 1 != FLOOR
         ):
-            active_sand[1] += 1
+            active_sand = (active_sand[0], active_sand[1] + 1)
 
         elif (
             (active_sand[0] - 1, active_sand[1] + 1) not in rocks and
             (active_sand[0] - 1, active_sand[1] + 1) not in resting_sand and
             active_sand[1] + 1 != FLOOR
         ):
-            active_sand[0] -= 1
-            active_sand[1] += 1
+            active_sand = (active_sand[0] - 1, active_sand[1] + 1)
 
         elif (
             (active_sand[0] + 1, active_sand[1] + 1) not in rocks and
             (active_sand[0] + 1, active_sand[1] + 1) not in resting_sand and
             active_sand[1] + 1 != FLOOR
         ):
-            active_sand[0] += 1
-            active_sand[1] += 1
+            active_sand = (active_sand[0] + 1, active_sand[1] + 1)
 
         else:
-            resting_sand.add(tuple(active_sand))
-            active_sand = list(SAND_SOURCE)
+            resting_sand.add(active_sand)
+            active_sand = SAND_SOURCE
 
     return len(resting_sand)
 

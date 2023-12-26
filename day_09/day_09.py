@@ -12,7 +12,7 @@ EXAMPLE_TXT_2 = os.path.join(os.path.dirname(__file__), 'example_2.txt')
 
 def day_09_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     head_x, head_y = 0, 0
     tail_x, tail_y = 0, 0
@@ -34,7 +34,10 @@ def day_09_part_1(filename: str) -> int:
 
             # Check if tail is still touching head
             is_tail_valid = False
-            for dx, dy in [(0, 0), (1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1), (-1, 1), (1, -1)]:
+            for dx, dy in (
+                    (0, 0), (1, 0), (0, 1), (-1, 0), (0, -1), (1, 1), (-1, -1),
+                    (-1, 1), (1, -1),
+            ):
                 if tail_x + dx == head_x and tail_y + dy == head_y:
                     is_tail_valid = True
                     break
@@ -49,7 +52,7 @@ def day_09_part_1(filename: str) -> int:
 
 def day_09_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     knots = [[0, 0] for _ in range(10)]
     knots_visited = [{(knots[0][0], knots[0][1])} for _ in range(10)]

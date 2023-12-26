@@ -11,17 +11,17 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_04_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     overlap = 0
     for pair in input:
         first, second = pair.split(',')
 
-        first_start, first_end = first.split('-')
-        first_start, first_end = int(first_start), int(first_end)
+        first_start_str, first_end_str = first.split('-')
+        first_start, first_end = int(first_start_str), int(first_end_str)
 
-        second_start, second_end = second.split('-')
-        second_start, second_end = int(second_start), int(second_end)
+        second_start_str, second_end_str = second.split('-')
+        second_start, second_end = int(second_start_str), int(second_end_str)
 
         if (
             (first_start <= second_start and first_end >= second_end) or
@@ -34,17 +34,17 @@ def day_04_part_1(filename: str) -> int:
 
 def day_04_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     overlap = 0
     for pair in input:
         first, second = pair.split(',')
 
-        first_start, first_end = first.split('-')
-        first_start, first_end = int(first_start), int(first_end)
+        first_start_str, first_end_str = first.split('-')
+        first_start, first_end = int(first_start_str), int(first_end_str)
 
-        second_start, second_end = second.split('-')
-        second_start, second_end = int(second_start), int(second_end)
+        second_start_str, second_end_str = second.split('-')
+        second_start, second_end = int(second_start_str), int(second_end_str)
 
         if (
             (first_start <= second_start and first_end >= second_end) or

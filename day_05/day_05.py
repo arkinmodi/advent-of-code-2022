@@ -12,7 +12,7 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_05_part_1(filename: str) -> str:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = [line.strip('\n') for line in f]
 
     NUM_OF_STACKS = 0
     BOTTOM_LAYER_INDEX = -1
@@ -22,7 +22,7 @@ def day_05_part_1(filename: str) -> str:
             BOTTOM_LAYER_INDEX = i - 1
             break
 
-    stacks = [[] for _ in range(NUM_OF_STACKS)]
+    stacks: list[list[str]] = [[] for _ in range(NUM_OF_STACKS)]
     for i in range(BOTTOM_LAYER_INDEX, -1, -1):
         stack_idx = 1
         for j in range(len(stacks)):
@@ -44,7 +44,7 @@ def day_05_part_1(filename: str) -> str:
 
 def day_05_part_2(filename: str) -> str:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = [line.strip('\n') for line in f]
 
     NUM_OF_STACKS = 0
     BOTTOM_LAYER_INDEX = -1
@@ -54,7 +54,7 @@ def day_05_part_2(filename: str) -> str:
             BOTTOM_LAYER_INDEX = i - 1
             break
 
-    stacks = [[] for _ in range(NUM_OF_STACKS)]
+    stacks: list[list[str]] = [[] for _ in range(NUM_OF_STACKS)]
     for i in range(BOTTOM_LAYER_INDEX, -1, -1):
         stack_idx = 1
         for j in range(len(stacks)):
@@ -68,7 +68,7 @@ def day_05_part_2(filename: str) -> str:
         from_stack = int(order[3]) - 1
         to_stack = int(order[5]) - 1
 
-        crane = collections.deque()
+        crane: collections.deque[str] = collections.deque()
         for _ in range(quantity):
             crane.appendleft(stacks[from_stack].pop())
         stacks[to_stack].extend(crane)

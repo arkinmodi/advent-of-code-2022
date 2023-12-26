@@ -12,10 +12,10 @@ EXAMPLE_TXT_2 = os.path.join(os.path.dirname(__file__), 'example_2.txt')
 
 def day_10_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     x, signal_strength, cycle = 1, 0, 0
-    tasks = []
+    tasks: list[list[int]] = []
     line = 0
     while line < len(input) or len(tasks) != 0:
         cycle += 1
@@ -45,12 +45,13 @@ def day_10_part_1(filename: str) -> int:
 
 def day_10_part_2(filename: str) -> str:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     SCREEN_WIDTH, SCREEN_HEIGHT = 40, 6
     crt_screen = ''
 
-    x, tasks, line = 1, [], 0
+    x, line = 1, 0
+    tasks: list[list[int]] = []
     for cycle in range(SCREEN_WIDTH * SCREEN_HEIGHT):
 
         # Update existing tasks

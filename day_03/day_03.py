@@ -11,9 +11,9 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_03_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
-    common = []
+    common: list[str] = []
     for rucksack in input:
         first_compartment = rucksack[:len(rucksack) // 2]
         second_compartment = rucksack[len(rucksack) // 2:]
@@ -25,14 +25,14 @@ def day_03_part_1(filename: str) -> int:
         else:
             return ord(c) - 38
 
-    return sum([priority(c) for c in common])
+    return sum(priority(c) for c in common)
 
 
 def day_03_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
-    common = []
+    common: list[str] = []
     for i in range(0, len(input) - 2, 3):
         common.extend(set(input[i]) & set(input[i + 1]) & set(input[i + 2]))
 
@@ -42,7 +42,7 @@ def day_03_part_2(filename: str) -> int:
         else:
             return ord(c) - 38
 
-    return sum([priority(c) for c in common])
+    return sum(priority(c) for c in common)
 
 
 @pytest.mark.parametrize(

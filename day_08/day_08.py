@@ -11,14 +11,14 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_08_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     # Build Grid
-    grid = []
+    grid: list[list[int]] = []
     for line in input:
         grid.append([])
-        for c in line:
-            grid[-1].append(int(c))
+        for col in line:
+            grid[-1].append(int(col))
 
     def is_visible(grid: list[list[int]], row: int, col: int) -> bool:
         ROW, COL = len(grid), len(grid[0])
@@ -55,10 +55,9 @@ def day_08_part_1(filename: str) -> int:
 
         return max_tree < tree
 
-    ROW, COL = len(grid), len(grid[0])
     visible_trees = 0
-    for r in range(ROW):
-        for c in range(COL):
+    for r in range(len(grid)):
+        for c in range(len(grid[0])):
             if is_visible(grid, r, c):
                 visible_trees += 1
 
@@ -67,14 +66,14 @@ def day_08_part_1(filename: str) -> int:
 
 def day_08_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip('\n') for l in f]
+        input = f.read().splitlines()
 
     # Build Grid
-    grid = []
+    grid: list[list[int]] = []
     for line in input:
         grid.append([])
-        for c in line:
-            grid[-1].append(int(c))
+        for col in line:
+            grid[-1].append(int(col))
 
     def get_scenic_score(grid: list[list[int]], row: int, col: int) -> int:
         ROW, COL = len(grid), len(grid[0])
@@ -110,10 +109,9 @@ def day_08_part_2(filename: str) -> int:
             total_score *= s
         return total_score
 
-    ROW, COL = len(grid), len(grid[0])
     scenic_scores = []
-    for r in range(ROW):
-        for c in range(COL):
+    for r in range(len(grid)):
+        for c in range(len(grid[0])):
             scenic_scores.append(get_scenic_score(grid, r, c))
 
     return max(scenic_scores)

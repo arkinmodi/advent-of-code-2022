@@ -12,7 +12,7 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_12_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     # Build Height Map
     height_map = [list(line) for line in input]
@@ -67,7 +67,7 @@ def day_12_part_1(filename: str) -> int:
 
 def day_12_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = f.read().splitlines()
 
     # Build Height Map
     height_map = [list(line) for line in input]

@@ -12,7 +12,7 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_13_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f if l.strip() != '']
+        input = [line.strip() for line in f if line.strip() != '']
 
     # 1 = Right Order, -1 = Not Right Order, 0 = Ran Out Of Items
     def is_right_order(left: list, right: list) -> int:
@@ -61,7 +61,7 @@ def day_13_part_1(filename: str) -> int:
 
 def day_13_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [eval(l.strip()) for l in f if l.strip() != '']
+        input = [eval(line.strip()) for line in f if line.strip() != '']
     input.append([[2]])
     input.append([[6]])
 

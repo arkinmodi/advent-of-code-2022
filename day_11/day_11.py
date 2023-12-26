@@ -12,10 +12,18 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_11_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = [line.strip() for line in f]
 
     class Monkey:
-        def __init__(self, items: list[int], operation: str, operation_amount: str, test: int, test_true: int, test_false: int) -> None:
+        def __init__(
+                self,
+                items: list[int],
+                operation: str,
+                operation_amount: str,
+                test: int,
+                test_true: int,
+                test_false: int,
+        ) -> None:
             self.items = collections.deque(items)
             self.items_inspected = 0
             self.operation = operation  # '+' or '*'
@@ -61,9 +69,7 @@ def day_11_part_1(filename: str) -> int:
         # Parse operation
         string_operation = input[i + 2].split(' ')
         operation = string_operation[4]
-        operation_amount = string_operation[5] if string_operation[5] == 'old' else int(
-            string_operation[5],
-        )
+        operation_amount = string_operation[5]
 
         # Parse test
         test = int(input[i + 3].split(' ')[-1])
@@ -87,22 +93,30 @@ def day_11_part_1(filename: str) -> int:
 
     # Calculate Monkey Business
     monkey_business = [0, 0]
-    for m in monkeys:
-        if m.items_inspected > monkey_business[0]:
+    for monkey in monkeys:
+        if monkey.items_inspected > monkey_business[0]:
             monkey_business[1] = monkey_business[0]
-            monkey_business[0] = m.items_inspected
-        elif m.items_inspected > monkey_business[1]:
-            monkey_business[1] = m.items_inspected
+            monkey_business[0] = monkey.items_inspected
+        elif monkey.items_inspected > monkey_business[1]:
+            monkey_business[1] = monkey.items_inspected
 
     return monkey_business[0] * monkey_business[1]
 
 
 def day_11_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [l.strip() for l in f]
+        input = [line.strip() for line in f]
 
     class Monkey:
-        def __init__(self, items: list[int], operation: str, operation_amount: str, test: int, test_true: int, test_false: int) -> None:
+        def __init__(
+                self,
+                items: list[int],
+                operation: str,
+                operation_amount: str,
+                test: int,
+                test_true: int,
+                test_false: int,
+        ) -> None:
             self.items = collections.deque(items)
             self.items_inspected = 0
             self.operation = operation  # '+' or '*'
@@ -148,9 +162,7 @@ def day_11_part_2(filename: str) -> int:
         # Parse operation
         string_operation = input[i + 2].split(' ')
         operation = string_operation[4]
-        operation_amount = string_operation[5] if string_operation[5] == 'old' else int(
-            string_operation[5],
-        )
+        operation_amount = string_operation[5]
 
         # Parse test
         test = int(input[i + 3].split(' ')[-1])
@@ -166,8 +178,8 @@ def day_11_part_2(filename: str) -> int:
 
     # Calculate Global Monkey Modulo
     GLOBAL_MONKEY_MODULO = 1
-    for m in monkeys:
-        GLOBAL_MONKEY_MODULO *= m.test
+    for monkey in monkeys:
+        GLOBAL_MONKEY_MODULO *= monkey.test
 
     # Play Keep Away
     for _ in range(10_000):
@@ -179,12 +191,12 @@ def day_11_part_2(filename: str) -> int:
 
     # Calculate Monkey Business
     monkey_business = [0, 0]
-    for m in monkeys:
-        if m.items_inspected > monkey_business[0]:
+    for monkey in monkeys:
+        if monkey.items_inspected > monkey_business[0]:
             monkey_business[1] = monkey_business[0]
-            monkey_business[0] = m.items_inspected
-        elif m.items_inspected > monkey_business[1]:
-            monkey_business[1] = m.items_inspected
+            monkey_business[0] = monkey.items_inspected
+        elif monkey.items_inspected > monkey_business[1]:
+            monkey_business[1] = monkey.items_inspected
 
     return monkey_business[0] * monkey_business[1]
 
