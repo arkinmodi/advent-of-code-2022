@@ -103,5 +103,5 @@ if __name__ == '__main__':
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()
 
-    print(f"Day 5 Part 1: {day_05_part_1(args.filename)}")
-    print(f"Day 5 Part 2: {day_05_part_2(args.filename)}")
+    print(f'Day 5 Part 1: {day_05_part_1(args.filename)}')
+    print(f'Day 5 Part 2: {day_05_part_2(args.filename)}')

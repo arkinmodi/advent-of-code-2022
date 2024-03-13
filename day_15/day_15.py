@@ -154,5 +154,5 @@ if __name__ == '__main__':
     parser.add_argument('-p2', '--max-bound', type=int, default=4_000_000)
     args = parser.parse_args()
 
-    print(f"Day 15 Part 1: {day_15_part_1(args.filename, args.target_row)}")
-    print(f"Day 15 Part 2: {day_15_part_2(args.filename, args.max_bound)}")
+    print(f'Day 15 Part 1: {day_15_part_1(args.filename, args.target_row)}')
+    print(f'Day 15 Part 2: {day_15_part_2(args.filename, args.max_bound)}')
