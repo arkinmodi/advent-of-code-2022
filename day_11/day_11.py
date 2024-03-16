@@ -33,7 +33,7 @@ def day_11_part_1(filename: str) -> int:
             self.test_false = test_false  # monkey to throw to if test is false
 
         def __str__(self) -> str:
-            return f"Inspected: {self.items_inspected}, Items: {self.items}"
+            return f'Inspected: {self.items_inspected}, Items: {self.items}'
 
         def inspect(self) -> None:
             if len(self.items) == 0:
@@ -126,7 +126,7 @@ def day_11_part_2(filename: str) -> int:
             self.test_false = test_false  # monkey to throw to if test is false
 
         def __str__(self) -> str:
-            return f"Inspected: {self.items_inspected}, Items: {self.items}"
+            return f'Inspected: {self.items_inspected}, Items: {self.items}'
 
         def inspect(self, modulo: int) -> None:
             if len(self.items) == 0:
@@ -228,5 +228,5 @@ if __name__ == '__main__':
     parser.add_argument('filename', nargs='?', default=INPUT_TXT)
     args = parser.parse_args()
 
-    print(f"Day 11 Part 1: {day_11_part_1(args.filename)}")
-    print(f"Day 11 Part 2: {day_11_part_2(args.filename)}")
+    print(f'Day 11 Part 1: {day_11_part_1(args.filename)}')
+    print(f'Day 11 Part 2: {day_11_part_2(args.filename)}')
