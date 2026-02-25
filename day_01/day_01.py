@@ -1,5 +1,3 @@
-from __future__ import annotations
-
 import argparse
 import os.path
 
@@ -11,35 +9,22 @@ EXAMPLE_TXT = os.path.join(os.path.dirname(__file__), 'example.txt')
 
 def day_01_part_1(filename: str) -> int:
     with open(filename) as f:
-        input = [n.strip() for n in f]
+        input = f.read()
 
-    elf_calories = []
-    curr = 0
-    for food in input:
-        if food:
-            curr += int(food)
-        else:
-            elf_calories.append(curr)
-            curr = 0
-    elf_calories.append(curr)
-
-    return max(elf_calories)
+    return max(
+        sum(int(calories) for calories in elf.split())
+        for elf in input.split('\n\n')
+    )
 
 
 def day_01_part_2(filename: str) -> int:
     with open(filename) as f:
-        input = [n.strip() for n in f]
+        input = f.read()
 
-    elf_calories = []
-    curr = 0
-    for food in input:
-        if food:
-            curr += int(food)
-        else:
-            elf_calories.append(curr)
-            curr = 0
-    elf_calories.append(curr)
-
+    elf_calories = [
+        sum(int(calories) for calories in elf.split())
+        for elf in input.split('\n\n')
+    ]
     elf_calories.sort(reverse=True)
     return sum(elf_calories[:3])
 
