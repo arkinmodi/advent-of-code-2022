@@ -1,7 +1,6 @@
-from __future__ import annotations
-
 import argparse
 import os.path
+from typing import Literal
 
 import pytest
 
@@ -13,19 +12,25 @@ def day_02_part_1(filename: str) -> int:
     with open(filename) as f:
         input = [n.strip() for n in f]
 
-    def decrypt_opponent(move: str) -> str:
-        match move:
-            case 'A': return 'rock'
-            case 'B': return 'paper'
-            case 'C': return 'scissors'
-            case _: raise Exception('Invalid Move')
+    def decrypt_opponent(move: str) -> Literal['rock', 'paper', 'scissors']:
+        if move == 'A':
+            return 'rock'
+        elif move == 'B':
+            return 'paper'
+        elif move == 'C':
+            return 'scissors'
+        else:
+            raise ValueError(f'Invalid Move: "{move}"')
 
-    def decrypt_me(move: str) -> str:
-        match move:
-            case 'X': return 'rock'
-            case 'Y': return 'paper'
-            case 'Z': return 'scissors'
-            case _: raise Exception('Invalid Move')
+    def decrypt_me(move: str) -> Literal['rock', 'paper', 'scissors']:
+        if move == 'X':
+            return 'rock'
+        elif move == 'Y':
+            return 'paper'
+        elif move == 'Z':
+            return 'scissors'
+        else:
+            raise ValueError(f'Invalid Move: "{move}"')
 
     total_score = 0
     for round in input:
@@ -59,12 +64,15 @@ def day_02_part_2(filename: str) -> int:
     with open(filename) as f:
         input = [n.strip() for n in f]
 
-    def decrypt_opponent(move: str) -> str:
-        match move:
-            case 'A': return 'rock'
-            case 'B': return 'paper'
-            case 'C': return 'scissors'
-            case _: raise Exception('Invalid Move')
+    def decrypt_opponent(move: str) -> Literal['rock', 'paper', 'scissors']:
+        if move == 'A':
+            return 'rock'
+        elif move == 'B':
+            return 'paper'
+        elif move == 'C':
+            return 'scissors'
+        else:
+            raise ValueError(f'Invalid Move: "{move}"')
 
     total_score = 0
     for round in input:
